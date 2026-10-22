@@ -29,9 +29,12 @@ export default function RootLayout() {
           <Stack.Screen name="signup" />
           <Stack.Screen name="verify-code" />
           <Stack.Screen name="choose-profile" />
-          <Stack.Screen name="create-profile" />
 
           {/* Bottom sheets: slide up over the screen behind them */}
+          <Stack.Screen
+            name="choose-account"
+            options={{ presentation: 'transparentModal', animation: 'slide_from_bottom' }}
+          />
           <Stack.Screen
             name="vault-filters"
             options={{ presentation: 'transparentModal', animation: 'slide_from_bottom' }}
