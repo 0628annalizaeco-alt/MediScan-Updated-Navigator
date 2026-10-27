@@ -3,10 +3,9 @@ import Slider from '@react-native-community/slider';
 import { Camera } from 'expo-camera';
 import { useEffect, useState } from 'react';
 import { Alert, Image, Modal, Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Screen = 'Settings' | 'Display' | 'Language' | 'Notifications' | 'Offline Database' | 'Privacy' | 'FAQs' | 'About MediScan' | 'Privacy Policy' | 'Terms of Service' | 'Open Source Licenses';
-
 
 const GREEN = '#164F43';
 const LIGHT_GREEN = '#8FB5A0';
@@ -46,9 +45,6 @@ const FAQS = [
     answer: '',
   },
 ];
-
-
-
 
 export default function SettingsContent({ onBack }: { onBack?: () => void }) {
   const [screen, setScreen] = useState<Screen>('Settings');
@@ -115,16 +111,26 @@ export default function SettingsContent({ onBack }: { onBack?: () => void }) {
   };
 
 
-  const Header = ({ title }: { title: string }) => (
-    <View style={styles.header}>
-      <Pressable onPress={goBack} style={styles.backButton} accessibilityRole="button" accessibilityLabel={screen === 'Settings' ? 'Open menu' : 'Go back'}>
-        <Ionicons name="arrow-back" size={25} color={GREEN} />
-      </Pressable>
-      <Text style={styles.headerTitle}>{title}</Text>
-      <View style={{ width: 36 }} />
-    </View>
-  );
 
+  const Header = ({ title }: { title: string }) => (
+    <SafeAreaView edges={['top']} style={styles.headerSafe}>
+      <View style={styles.header}>
+        <Pressable
+          onPress={goBack}
+          style={styles.backButton}
+          hitSlop={12}
+          accessibilityRole="button"
+          accessibilityLabel={screen === 'Settings' ? 'Open menu' : 'Go back'}
+        >
+          <Ionicons name="arrow-back" size={25} color={GREEN} />
+        </Pressable>
+
+        <Text style={styles.headerTitle}>{title}</Text>
+
+        <View style={{ width: 36 }} />
+      </View>
+    </SafeAreaView>
+  );
 
   const ProfileCard = () => (
     <View style={styles.profileCard}>
@@ -556,8 +562,9 @@ const styles = StyleSheet.create({
   menuLogoutArea: { marginTop: 'auto', minHeight: 68, paddingHorizontal: 28, paddingVertical: 10, justifyContent: 'center', backgroundColor: '#D8F0DE' },
   menuLogoutButton: { minHeight: 44, borderRadius: 9, backgroundColor: '#173D35', alignItems: 'center', justifyContent: 'center' },
   menuLogoutText: { color: '#FFFFFF', fontSize: 13, fontWeight: '700' },
-  header: { height: 58, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18, borderBottomWidth: 1, borderBottomColor: BORDER, backgroundColor: BG },
-  backButton: { width: 36, alignItems: 'flex-start', justifyContent: 'center' },
+  headerSafe: { backgroundColor: BG,},
+  header: { height: 52, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18, borderBottomWidth: 1, borderBottomColor: BORDER, backgroundColor: BG, },
+  backButton: { width: 36, height: 44, alignItems: 'flex-start', justifyContent: 'center', },
   headerTitle: { fontSize: 21, fontWeight: '700', color: TEXT },
   scroll: { flex: 1 },
   content: { padding: 20, paddingBottom: 30 },
@@ -672,7 +679,3 @@ const styles = StyleSheet.create({
   confirmCacheButton: { flex: 1, minHeight: 36, borderRadius: 6, alignItems: 'center', justifyContent: 'center', backgroundColor: '#D9342B' },
   confirmCacheText: { color: '#FFFFFF', fontSize: 13, fontWeight: '700' },
 });
-
-
-
-
