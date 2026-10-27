@@ -2,7 +2,7 @@ import AddMenu from '@/components/AddMenu';
 import AppHeader from '@/components/AppHeader';
 import LogoutDialog from '@/components/LogoutDialog';
 import { MenuProvider } from '@/components/MenuContext';
-import SideMenu from '@/components/SideMenu';
+import HamburgerMenu from '@/components/HamburgerMenu';
 import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -42,7 +42,7 @@ export default function RootLayout() {
         </Stack>
 
         {/* Popups that sit on top of everything */}
-        <SideMenu />
+        <HamburgerMenu />
         <AddMenu />
         <LogoutDialog />
       </MenuProvider>
