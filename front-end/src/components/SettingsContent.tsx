@@ -22,27 +22,27 @@ const FAQS = [
   },
   {
     question: "What if the app can't read the label?",
-    answer: '',
+    answer: "If the app can't read the label, it will display a message indicating that the photo is blurry or unreadable. Mediscan will then give you the option to rescan, choose a different photo, or enter the medicine details manually.",
   },
   {
     question: 'How do I add a medicine manually?',
-    answer: '',
+    answer: 'To add a medicine manually, press the plus (+) button in the middle of the footer. Two options will appear: scan and enter manually. Select Enter Manually to input the medicine details yourself.',
   },
   {
     question: 'How do reminders work?',
-    answer: '',
+    answer: 'Reminders allow you to select a medicine from the vault, set its start date, reminder time, frequency, and assigned family member. Mediscan can then notify you through notifications, vibration, or sound to help you keep track of your medicines.',
   },
   {
     question: 'How do I add a family member?',
-    answer: '',
+    answer: 'To add a family member, go to the Profile button in the footer and select Add a Profile. You can then create a profile for the family member you want to manage.',
   },
   {
     question: 'How does syncing work?',
-    answer: '',
+    answer: 'Syncing works by comparing the data stored on your device with the data on the server to determine which version is the most up-to-date. If your device has the latest data, it will update the server. If the server has the latest data, your device will sync with the server to retrieve the updated information.',
   },
   {
     question: 'Is my data private?',
-    answer: '',
+    answer: 'Yes, Mediscan is designed to protect your personal information by limiting access to authorized users and securely handling your data. Your information is stored and managed to help maintain its confidentiality and prevent unauthorized access.',
   },
 ];
 
